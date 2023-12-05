@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>User Create</title>
+</head>
+
+<body>
+    <nav class="py-4 px-6 bg-gray-800 text-white">
+        <a class="text-lg mx-4" href="/">Home</a>
+        <a class="text-lg mx-4" href="/user/">All Users</a>
+        <a class="text-lg mx-4" href="/user/create">Create User</a>
+    </nav>
+    <main class="m-10">
+    <div class="w-1/2 m-auto">
+        <h1 class="text-2xl mb-4">Create User</h1>
+    <form action="/user/" method="post" class="border rounded-md shadow-md p-4">
+        <input type="text" name="name" placeholder="Enter your name" class="border rounded-md p-2">
+        <input type="email" name="email" placeholder="Enter Your email"class="border rounded-md p-2">
+        <button type="submit" class="bg-red-500 border text-white rounded-md p-2 hover:bg-gray-600">Create</button>
+    </form>
+    </div>
+    </main>
+</body>
+
+</html>

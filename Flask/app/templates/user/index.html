@@ -1,0 +1,44 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Users</title>
+</head>
+
+    <nav class="py-4 px-6 bg-gray-800 text-white">
+        <a class="text-lg mx-4" href="/">Home</a>
+        <a class="text-lg mx-4" href="/user/">All Users</a>
+        <a class="text-lg mx-4" href="/user/create">Create User</a>
+    </nav>
+<main class="m-10">
+<div class="m-auto w-1/2">
+<h1 class="text-2xl mb-4">All Users!</h1>
+
+<ul class="w-1/2 p-4 border rounded-md shadow-md">
+    {% for user in users %}
+    <a href="/user/{{user.id}}" class="flex justify-between">
+        <p class="mr-4">{{ user.name }}</p>
+        <div>
+            <form id="{{user.id}}" class="delete-form">
+                <button class="bg-red-500 text-white rounded-md px-2 py-1" type="submit">Delete</button>
+            </form>
+        </div>
+    </a>
+    {% endfor %}
+</ul>
+</div>
+</main>
+
+<script>
+    document.addEventListener('submit', (e) => {
+        if (e.target.classList.contains('delete-form')){
+            e.preventDefault();
+            const id = e.target.id;
+            fetch(`/user/${id}`,{
+                method: 'DELETE'
+            }).then(() => {
+                window.location.href = '/user/';
+            })
+        }
+    })
+</script>
